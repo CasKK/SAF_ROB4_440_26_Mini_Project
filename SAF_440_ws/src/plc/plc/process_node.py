@@ -15,7 +15,7 @@ class MyNode(Node):
         self.sub = self.create_subscription(String, 'tcp_topic', self.tcp_callback, 10)
         self.pub = self.create_publisher(String, 'process_topic', 10)
         
-        package_path = get_package_share_directory('PLC')
+        package_path = get_package_share_directory('plc')
         csv_path = os.path.join(package_path, 'procssing_times_table.csv')
         self.df = pd.read_csv(csv_path, sep=';', index_col=0)
         self.data = self.df.values  # converts to numpy 2D array
