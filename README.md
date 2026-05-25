@@ -17,7 +17,7 @@ cd SAF_ROB4_440_26_Mini_Project/SAF_440_ws
 Build a docker image...
 
 ```
-docker build -t miniproject:latest
+docker build -t miniproject:latest .
 ```
 
 ... and then run this command
