@@ -3,8 +3,8 @@
   <name>plc_interfaces</name>
   <version>0.0.0</version>
   <description>Service interfaces for plc</description>
-  <maintainer email="you@example.com">you</maintainer>
-  <license>Apache-2.0</license>
+  <maintainer email="saltworkermlu@gmail.com">Mathias Lykholt-Ustrup</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <build_depend>rosidl_default_generators</build_depend>
