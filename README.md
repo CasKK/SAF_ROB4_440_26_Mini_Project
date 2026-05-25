@@ -29,4 +29,4 @@ docker run --rm -it \
   miniproject:latest /bin/bash
 ```
 
-To run the docker again, go to the speficied foler and type in the above command.
+To run the docker again, go to the specified folder and type in the above command.
