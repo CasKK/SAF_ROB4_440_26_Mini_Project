@@ -3,7 +3,7 @@ from rclpy.node import Node
 import pandas as pd
 import xml.etree.ElementTree as ET
 from ament_index_python.packages import get_package_share_directory
-from plc.srv import ProcessXml          # your custom service type
+from plc_interfaces.srv import ProcessXml          # your custom service type
 import os
 
 

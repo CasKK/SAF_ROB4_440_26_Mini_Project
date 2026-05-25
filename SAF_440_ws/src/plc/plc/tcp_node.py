@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 import socket
-from plc.srv import ProcessXml          # same service type
+from plc_interfaces.srv import ProcessXml          # same service type
 
 
 class TcpNode(Node):
