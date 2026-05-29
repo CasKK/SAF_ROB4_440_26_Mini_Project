@@ -36,8 +36,10 @@ class ProcessNode(Node):
             date_time  = root.find('DateTime').text
             station_id = root.find('StationID').text
 
-            self.data_pub.publish('{},{},{}'.format(carrier_id, date_time, station_id))
+            msg = String()
+            msg.data = '{},{},{}'.format(carrier_id, date_time, station_id)
 
+            self.data_pub.publish(msg)
             self.get_logger().info(
                 f'Request — CarrierID: {carrier_id}, StationID: {station_id}, DateTime: {date_time}'
             )
