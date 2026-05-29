@@ -36,18 +36,18 @@ class ProcessNode(Node):
             date_time  = root.find('DateTime').text
             station_id = root.find('StationID').text
 
+            col = f'Station#0{station_id}' if int(station_id) < 10 else f'Station#{station_id}'
+            value = self.df.loc[f'Carrier#{carrier_id}', col]
+
+            self.get_logger().info(f'Processing time: {value}')
+            
             msg = String()
-            msg.data = '{},{},{}'.format(carrier_id, date_time, station_id)
+            msg.data = '{},{},{}.{}'.format(carrier_id, date_time, station_id, value)
 
             self.data_pub.publish(msg)
             self.get_logger().info(
                 f'Request — CarrierID: {carrier_id}, StationID: {station_id}, DateTime: {date_time}'
             )
-
-            col = f'Station#0{station_id}' if int(station_id) < 10 else f'Station#{station_id}'
-            value = self.df.loc[f'Carrier#{carrier_id}', col]
-
-            self.get_logger().info(f'Processing time: {value}')
 
             # Build XML response
             resp_root = ET.Element('root')
