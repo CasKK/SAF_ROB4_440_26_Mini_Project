@@ -31,6 +31,7 @@ setup(
         'console_scripts': [
         'tcp_node = plc.tcp_node:main',
         'process_node = plc.process_node:main',
+        'data_saver = plc.data_saver:main',
         ],
     },
 )
