@@ -18,8 +18,16 @@ def generate_launch_description():
         output='screen'
     )
 
+    data_saver = Node(
+        package='plc',
+        executable='data_saver',
+        name='data_saver',
+        output='screen'
+    )
+
     return LaunchDescription([
         process_node,
-        tcp_node
+        tcp_node,
+        data_saver
     ])
 
