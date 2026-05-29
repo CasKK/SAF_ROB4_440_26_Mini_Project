@@ -1,6 +1,6 @@
 # SAF_ROB4_440_26_Mini_Project
 
-## Get started
+## Procedure
 
 Install the GitHub repo:
 
