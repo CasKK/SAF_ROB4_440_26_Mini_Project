@@ -5,6 +5,8 @@ import xml.etree.ElementTree as ET
 from ament_index_python.packages import get_package_share_directory
 from plc_interfaces.srv import ProcessXml          # your custom service type
 import os
+import csv
+from std_msgs.msg import String
 
 
 class ProcessNode(Node):
@@ -14,6 +16,8 @@ class ProcessNode(Node):
 
         # Create the service SERVER — name it, give it a type and a callback
         self.srv = self.create_service(ProcessXml, 'process_xml', self.handle_request)
+
+        self.data_pub = self.create_publisher(String, 'data_broadcast', 10)
 
         package_path = get_package_share_directory('plc')
         csv_path = os.path.join(package_path, 'procssing_times_table.csv')
@@ -31,6 +35,8 @@ class ProcessNode(Node):
             carrier_id = root.find('CarrierID').text
             date_time  = root.find('DateTime').text
             station_id = root.find('StationID').text
+
+            self.data_pub.publish('{},{},{}'.format(carrier_id, date_time, station_id))
 
             self.get_logger().info(
                 f'Request — CarrierID: {carrier_id}, StationID: {station_id}, DateTime: {date_time}'
