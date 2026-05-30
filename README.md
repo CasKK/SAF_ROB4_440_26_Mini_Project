@@ -20,13 +20,3 @@ Build a docker image...
 docker build -t miniproject:latest .
 ```
 
-... and then run this command
-
-```
-docker run --rm -it \
-  -v "$(pwd)":/ros2_ws \
-  -p 12343:12343 \
-  miniproject:latest /bin/bash
-```
-
-To run the docker again, go to the specified folder and type in the above command.
