@@ -3,9 +3,8 @@ from rclpy.node import Node
 import pandas as pd
 import xml.etree.ElementTree as ET
 from ament_index_python.packages import get_package_share_directory
-from plc_interfaces.srv import ProcessXml          # your custom service type
+from plc_interfaces.srv import ProcessXml          # custom service type
 import os
-import csv
 from std_msgs.msg import String
 
 
@@ -14,7 +13,7 @@ class ProcessNode(Node):
     def __init__(self):
         super().__init__('process_node')
 
-        # Create the service SERVER — name it, give it a type and a callback
+        # Create the service SERVER
         self.srv = self.create_service(ProcessXml, 'process_xml', self.handle_request)
 
         self.data_pub = self.create_publisher(String, 'data_broadcast', 10)
@@ -64,7 +63,7 @@ class ProcessNode(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = ProcessNode()
-    rclpy.spin(node)      # spin() is enough — no manual loop needed
+    rclpy.spin(node)
 
 
 if __name__ == '__main__':

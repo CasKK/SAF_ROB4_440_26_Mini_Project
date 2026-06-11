@@ -1,7 +1,5 @@
 import rclpy
 from rclpy.node import Node
-import socket
-from plc_interfaces.srv import ProcessXml          # same service type
 from std_msgs.msg import String
 import csv
 
@@ -10,7 +8,6 @@ class Save(Node):
     def __init__(self):
         super().__init__('tcp_node')
 
-        # Create the service CLIENT — just needs the name + type
         self.message = self.create_subscription(String, 'data_broadcast', self.handle_data_callback, 10)
 
 

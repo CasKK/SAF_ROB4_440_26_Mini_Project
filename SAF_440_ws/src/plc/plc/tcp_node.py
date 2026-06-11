@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 import socket
-from plc_interfaces.srv import ProcessXml          # same service type
+from plc_interfaces.srv import ProcessXml          # service type
 
 
 class TcpNode(Node):
@@ -9,10 +9,10 @@ class TcpNode(Node):
     def __init__(self):
         super().__init__('tcp_node')
 
-        # Create the service CLIENT — just needs the name + type
+        # Create the service CLIENT
         self.cli = self.create_client(ProcessXml, 'process_xml')
 
-        # Wait until the server is actually running before continuing
+        # Wait until the server is running
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('Waiting for process_node service...')
 
@@ -55,7 +55,6 @@ class TcpNode(Node):
             xml_string = data.decode('utf-8')
             self.get_logger().info(f'Received from PLC: {xml_string}')
 
-            # ── service call replaces publish + wait-for-callback ──
             result_xml = self.call_process_service(xml_string)
             self.get_logger().info(f'Service response: {result_xml}')
 

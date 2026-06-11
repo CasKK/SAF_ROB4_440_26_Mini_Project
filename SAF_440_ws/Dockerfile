@@ -9,33 +9,11 @@ RUN apt-get update && apt-get install -y \
     python3-pandas \
     && rm -rf /var/lib/apt/lists/*
 
-# Optional: install additional ROS packages if needed
+# install additional ROS packages
 RUN apt-get update && apt-get install -y \
     ros-humble-std-msgs \
     ros-humble-ament-index-python \
     && rm -rf /var/lib/apt/lists/*
-
-# # Create workspace
-# WORKDIR /ros2_ws
-
-# # Copy your package into the container
-# COPY . /ros2_ws
-
-# # Source ROS automatically
-# SHELL ["/bin/bash", "-c"]
-
-# # Build workspace if this is a ROS2 package
-# RUN source /opt/ros/humble/setup.bash && \
-#     if [ -f "/ros2_ws/src/package.xml" ]; then \
-#         colcon build; \
-#     fi
-
-# # Source workspace on container startup
-# RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && \
-#     echo "if [ -f /ros2_ws/install/setup.bash ]; then source /ros2_ws/install/setup.bash; fi" >> ~/.bashrc
-
-# # Default command
-# CMD ["/bin/bash"]
 
 ENV DISPLAY=:0
 ENV QT_X11_NO_MITSHM=1
